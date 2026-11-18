@@ -1,0 +1,7 @@
+<resources>
+    <string name="launcher_app_name">Liquid Glass Launcher</string>
+    <string name="launcher_search_hint">Search apps</string>
+    <string name="launcher_apps_title">Your apps</string>
+    <string name="launcher_footer">Lightweight mode · Liquid Glass</string>
+    <string name="launcher_no_apps">No apps found</string>
+</resources>
