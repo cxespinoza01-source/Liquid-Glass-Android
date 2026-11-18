@@ -2,10 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 读取图片权限 (Android 13+) -->
+    <!-- Expose only activities that declare themselves as launchable apps. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <!-- Demo image picker permissions. The launcher itself does not request storage access. -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <!-- 读取外部存储权限 (Android 12 及以下) -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
     <application
@@ -19,27 +27,31 @@
         android:theme="@style/Theme.LiquidGlass"
         tools:targetApi="31">
 
-        <!-- LiquidGlass 专业演示 Activity (主入口)
-             注意：namespace 为 com.example.liquidglass.demo，
-             Activity 类仍在 com.example.liquidglass 包下，需写全名 -->
         <activity
-            android:name="com.example.liquidglass.ProfessionalDemoActivity"
+            android:name="com.example.liquidglass.LauncherActivity"
             android:exported="true"
-            android:label="LiquidGlass Professional Demo"
-            android:screenOrientation="portrait">
+            android:label="@string/launcher_app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- README 首屏素材录制用：iOS 壁纸 + 图标网格 + 液态玻璃药丸 -->
+        <!-- Existing Liquid Glass demo remains available from the app drawer. -->
+        <activity
+            android:name="com.example.liquidglass.ProfessionalDemoActivity"
+            android:exported="true"
+            android:label="LiquidGlass Professional Demo" />
+
         <activity
             android:name="com.example.liquidglass.HeroShowcaseActivity"
             android:exported="true"
-            android:label="LiquidGlass Hero"
-            android:screenOrientation="portrait" />
+            android:label="LiquidGlass Hero" />
 
     </application>
-
 </manifest>
