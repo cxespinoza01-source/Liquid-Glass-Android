@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import com.example.liquidglass.demo.R
 import java.text.DateFormat
 import java.util.Date
 import java.util.Locale
@@ -122,7 +123,7 @@ class LauncherActivity : Activity() {
         appGrid = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
         }
-        scroll.addView(appGrid, ScrollView.LayoutParams(
+        scroll.addView(appGrid, ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
         ))
         root.addView(scroll, LinearLayout.LayoutParams(
